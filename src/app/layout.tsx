@@ -1,3 +1,5 @@
+import { queryClient } from "@/config/query.config";
+import { QueryClientProvider } from "@tanstack/react-query";
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import NextTopLoader from "nextjs-toploader";
@@ -35,7 +37,9 @@ export default function RootLayout({
           speed={800}
           zIndex={9999}
         />
-        {children}
+        <QueryClientProvider client={queryClient}>
+          {children}
+        </QueryClientProvider>
         <Toaster richColors />
       </body>
     </html>
