@@ -1,10 +1,9 @@
-import { queryClient } from "@/config/query.config";
-import { QueryClientProvider } from "@tanstack/react-query";
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import NextTopLoader from "nextjs-toploader";
 import { Toaster } from "sonner";
 import "./globals.css";
+import { QueryWrapper } from "./layouts/query.wrapper";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -37,9 +36,7 @@ export default function RootLayout({
           speed={800}
           zIndex={9999}
         />
-        <QueryClientProvider client={queryClient}>
-          {children}
-        </QueryClientProvider>
+        <QueryWrapper>{children}</QueryWrapper>
         <Toaster richColors />
       </body>
     </html>
